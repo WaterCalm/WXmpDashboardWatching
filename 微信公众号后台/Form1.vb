@@ -219,14 +219,15 @@ Public Class Form1
         TextBox_JsonData.Text = GetWXData(TextBox_wxURL.Text, TextBox_Cookies.Text)
         DoJsonWX_CreatCol(TextBox_JsonData.Text)
         DoJsonWX_WriteData(TextBox_JsonData.Text)
-        Label_FileState.Text = "文件正在保存……"
-        Export_Excel(DataGridView_wxData, excelFileName)
-        Label_FilePath.Text = "路径：" & Directory.GetCurrentDirectory() & "\" & excelFileName & ".xlsx"
-        Label_FileState.Text = "文件已保存"
         Label_TimeCount.ForeColor = Color.Red
         Timer_jiange.Enabled = True
         Timer_daojishi.Enabled = True
         Button_Stop.Enabled = True
+        Label_FileState.Text = "文件正在保存……"
+        Export_Excel(DataGridView_wxData, excelFileName)
+        Label_FilePath.Text = "路径：" & Directory.GetCurrentDirectory() & "\" & excelFileName & ".xlsx"
+        Label_FileState.Text = "文件已保存"
+
 
     End Sub
 
@@ -306,11 +307,12 @@ Public Class Form1
         daojishi()
         TextBox_JsonData.Text = GetWXData(TextBox_wxURL.Text, TextBox_Cookies.Text)
         DoJsonWX_WriteData(TextBox_JsonData.Text)
+        Timer_daojishi.Enabled = True
         Label_FileState.Text = "文件正在保存……"
         Export_Excel(DataGridView_wxData, excelFileName)
         Label_FilePath.Text = "路径：" & Directory.GetCurrentDirectory() & "\" & excelFileName & ".xlsx"
         Label_FileState.Text = "文件已保存"
-        Timer_daojishi.Enabled = True
+
     End Sub
 
     Private Sub Button_Stop_Click(sender As Object, e As EventArgs) Handles Button_Stop.Click
